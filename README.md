@@ -53,17 +53,17 @@ import (
 )
 
 func main() {
-	bin, err := BinomialNew(10, 0.5)
-	if err != nil {
-		panic(err)
-	}
+    bin, err := distributions.BinomialNew(10, 0.5)
+    if err != nil {
+        panic(err)
+    }
 
-	val, err := bin.Prob(3)
-	if err != nil {
-		panic(err)
-	}
+    val, err := bin.Prob(3)
+    if err != nil {
+        panic(err)
+    }
 
-	fmt.Printf("chance of getting 3 heads when throwing 10 times = %f%%\n", val*100)
+    fmt.Printf("chance of getting 3 heads when throwing 10 times = %f%%\n", val*100)
 }
 ```
 
