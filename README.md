@@ -42,17 +42,42 @@ func main() {
 }
 ```
 
+Calculating the chance of getting 3 heads when throwing a coin 10 times:
+
+```go
+package main
+
+import (
+   "fmt"
+   "github.com/xnacly/statlib/distributions"
+)
+
+func main() {
+	bin, err := BinomialNew(10, 0.5)
+	if err != nil {
+		panic(err)
+	}
+
+	val, err := bin.Prob(3)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("chance of getting 3 heads when throwing 10 times = %f%%\n", val*100)
+}
+```
+
 ## Features
 
 - [x] Factorial
 - [x] Binomial coefficient
-- [ ] Distributions
+- [ ] Distributions (for `X=k`)
   - [ ] for each of the following
     - [ ] Median
     - [ ] Mode
     - [ ] Mean
     - [ ] Variance
-  - [ ] Binomial
+  - [x] Binomial
   - [ ] Normal
   - [ ] Poisson
 
