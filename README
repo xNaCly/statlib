@@ -24,11 +24,15 @@ Computing the value of 12!:
     )
 
     func main() {
-        fmt.Printf("12! = %d\n", statlib.Fac(12))
+        val, err := statlib.Fac(12)
+        if err != nil {
+            panic(err)
+        }
+        fmt.Printf("12! = %d\n", val)
     }
 
 
-Choosing 3 possibilities out of 6 options:
+Choosing 6 possibilities out of 49 options:
 
     package main
 
@@ -38,5 +42,9 @@ Choosing 3 possibilities out of 6 options:
     )
 
     func main() {
-        fmt.Printf("6nCr3 = %d\n", statlib.BinomialCoefficient(6, 3))
+        val, err := statlib.BinomialCoefficient(49, 6)
+        if err != nil {
+            panic(err)
+        }
+        fmt.Printf("49nCr6 = %d\n", val)
     }

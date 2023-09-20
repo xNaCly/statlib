@@ -20,6 +20,7 @@ func TestBinomialCoefficient(t *testing.T) {
 		{in: input{n: 49, k: 6}, exp: 13_983_816},
 		{in: input{n: 6, k: 5}, exp: 6},
 		{in: input{n: 10, k: 5}, exp: 252},
+		{in: input{n: 20, k: 15}, exp: 15504},
 	}
 	for _, e := range table {
 		t.Run(fmt.Sprint(e.in), func(t *testing.T) {
