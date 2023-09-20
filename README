@@ -1,0 +1,42 @@
+statlib
+-------
+
+go library for commonly used statistical computations, optimized for performance 
+
+Test
+----
+
+Run the following to execute the test suite
+    
+    go test ./... 
+
+
+Usage
+-----
+
+Computing the value of 12!:
+
+    package main
+
+    import (
+       "fmt"
+       "github.com/xnacly/statlib"
+    )
+
+    func main() {
+        fmt.Printf("12! = %d\n", statlib.Fac(12))
+    }
+
+
+Choosing 3 possibilities out of 6 options:
+
+    package main
+
+    import (
+       "fmt"
+       "github.com/xnacly/statlib"
+    )
+
+    func main() {
+        fmt.Printf("6nCr3 = %d\n", statlib.BinomialCoefficient(6, 3))
+    }
