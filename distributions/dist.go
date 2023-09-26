@@ -1,6 +1,8 @@
 package distributions
 
-import "math"
+import (
+	"math"
+)
 
 type Distribution interface {
 	Median() float64                 // value separating the higher half from the lower half of a data sample
@@ -10,9 +12,13 @@ type Distribution interface {
 	Prob(k float64) (float64, error) // computes probability
 }
 
-const room = 0.0001
+const epsilon = 1e-6
 
-// subtracts a and b, returns true if result is smaller than room
-func utilCompareFloats(a float64, b float64) bool {
-	return (math.Abs(a) - math.Abs(b)) < room
+// returns true if equal within an epsilon of dist.epsilon
+func compareFloats(a float64, b float64) bool {
+	if a == b {
+		return true
+	}
+	p := math.Abs(a) - math.Abs(b)
+	return p < epsilon && p > 0
 }
