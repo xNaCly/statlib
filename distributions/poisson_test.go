@@ -27,7 +27,7 @@ func TestPoission(t *testing.T) {
 	for _, e := range table {
 		t.Run(fmt.Sprint(e), func(t *testing.T) {
 			p := Poisson{
-				lambda: e.i.lambda,
+				Lambda: e.i.lambda,
 			}
 			if !compareFloats(e.e.median, p.Median()) {
 				t.Errorf("Median %.14f != %.14f\n", e.e.median, p.Median())

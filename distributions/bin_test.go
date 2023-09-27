@@ -29,9 +29,9 @@ func TestBinomial(t *testing.T) {
 	for _, e := range table {
 		t.Run(fmt.Sprint(e), func(t *testing.T) {
 			b := Binomial{
-				n: float64(e.i.n),
-				p: e.i.p,
-				q: 1 - e.i.p,
+				N: float64(e.i.n),
+				P: e.i.p,
+				Q: 1 - e.i.p,
 			}
 			if !compareFloats(e.e.median, b.Median()) {
 				t.Errorf("Median %.14f != %.14f\n", e.e.median, b.Median())
