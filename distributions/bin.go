@@ -1,7 +1,6 @@
 package distributions
 
 import (
-	"fmt"
 	"math"
 
 	"github.com/xnacly/statlib"
@@ -11,26 +10,13 @@ import (
 // of n independent experiments, each asking a yes–no question, and each with
 // its own Boolean-valued outcome: success (with probability p) or failure (1-p).
 //
+// requires: 0 < P < 1
+//
 // See https://en.wikipedia.org/wiki/Binomial_distribution
 type Binomial struct {
 	N float64 // number of trials
 	P float64 // success probability
 	Q float64 // failure probability
-}
-
-func ExampleBinomial() {
-	bin := Binomial{
-		N: 10,
-		P: 0.5,
-		Q: 1 - 0.5,
-	}
-
-	val, err := bin.Prob(3)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("chance of getting 3 heads when throwing 10 times = %f%%\n", val*100)
 }
 
 func (b *Binomial) Prob(k float64) (float64, error) {

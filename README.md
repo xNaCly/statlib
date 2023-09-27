@@ -9,6 +9,8 @@ Go library for commonly used statistical computations, optimized for performance
 - Distributions (for `X=k`)
   - Binomial
   - Poisson
+  - Hypergeometric
+  - Geometric
 - Methods for distributions
   - Probability
   - Median
@@ -113,6 +115,35 @@ func main() {
     }
 
     fmt.Printf("Chance of getting exactly 2 calls in one minute = %f%%\n", val*100)
+}
+```
+
+#### Hypergeometric distribution
+
+Choosing 5 light bulbs from a package of 20 light bulbs in which 20% aren't
+working. What is the chance to have 0 broken light bulbs?
+
+```go
+package main
+
+import (
+    "fmt"
+    "github.com/xnacly/statlib/distributions"
+)
+
+func main() {
+    hyper := distributions.Hypergeometric{
+        N:      20,
+        K:      20 * 0.2,
+        SmallN: 5,
+    }
+
+    val, err := hyper.Prob(0)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Chance of 0 broken light bulbs when choosing 5 out of 20 in which 20%% are broken = %f%%\n", val*100)
 }
 ```
 

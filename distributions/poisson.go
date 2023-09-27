@@ -1,7 +1,6 @@
 package distributions
 
 import (
-	"fmt"
 	"math"
 
 	"github.com/xnacly/statlib"
@@ -12,22 +11,11 @@ import (
 // events occur with a known constant mean rate and independently of the time
 // since the last event
 //
+// requires: 0 < Lambda
+//
 // See https://en.wikipedia.org/wiki/Poisson_distribution
 type Poisson struct {
 	Lambda float64 // rate
-}
-
-func ExamplePoisson() {
-	pois := Poisson{
-		Lambda: 5.3,
-	}
-
-	val, err := pois.Prob(2)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("Chance of getting exactly 2 calls in one minute = %f%%\n", val*100)
 }
 
 func (p *Poisson) Prob(k float64) (float64, error) {
