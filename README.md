@@ -4,18 +4,17 @@ Go library for commonly used statistical computations, optimized for performance
 
 ## Features
 
-- [x] very fast Factorial
-- [x] fast Binomial coefficient
-- [ ] Distributions (for `X=k`)
-  - [ ] for each of the following
-    - [ ] Median
-    - [ ] Mode
-    - [ ] Mean
-    - [ ] Variance
-  - [x] Binomial
-  - [x] Poisson
-  - [ ] Geometric
-  - [ ] Exponential
+- very fast Factorial
+- very fast Binomial coefficient
+- Distributions (for `X=k`)
+  - Binomial
+  - Poisson
+- Methods for distributions
+  - Probability
+  - Median
+  - Mode
+  - Mean
+  - Variance
 
 ## Usage
 
@@ -77,12 +76,9 @@ import (
 
 func main() {
     bin := distributions.Binomial{
-        n: 10,
-        p: 0.5,
-        q: 1 - 0.5,
-    }
-    if err != nil {
-        panic(err)
+        N: 10,
+        P: 0.5,
+        Q: 1 - 0.5,
     }
 
     val, err := bin.Prob(3)
@@ -108,10 +104,7 @@ import (
 
 func main() {
     pois := distributions.Poisson{
-        lambda: 5.3,
-    }
-    if err != nil {
-        panic(err)
+        Lambda: 5.3,
     }
 
     val, err := pois.Prob(2)
