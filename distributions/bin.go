@@ -4,25 +4,12 @@ import (
 	"math"
 
 	"github.com/xnacly/statlib"
-	"github.com/xnacly/statlib/staterror"
 )
 
 type Binomial struct {
 	n float64 // number of trials
 	p float64 // success probability for each trial
 	q float64 // 1 - p
-}
-
-// Returns error if not 0<p<1, computes q
-func BinomialNew(n uint64, p float64) (*Binomial, error) {
-	if p < 0 && p > 1 {
-		return nil, staterror.New("Binomial distribution requires 0 <= p <= 1")
-	}
-	return &Binomial{
-		n: float64(n),
-		p: p,
-		q: 1 - p,
-	}, nil
 }
 
 func (b *Binomial) Prob(k float64) (float64, error) {

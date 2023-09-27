@@ -4,20 +4,10 @@ import (
 	"math"
 
 	"github.com/xnacly/statlib"
-	"github.com/xnacly/statlib/staterror"
 )
 
 type Poisson struct {
 	lambda float64 // rate
-}
-
-func PoissonNew(lambda float64) (*Poisson, error) {
-	if lambda < 0 {
-		return nil, staterror.New("Poisson distribution requires lambda > 0")
-	}
-	return &Poisson{
-		lambda,
-	}, nil
 }
 
 func (p *Poisson) Prob(k float64) (float64, error) {
