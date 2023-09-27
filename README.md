@@ -4,6 +4,8 @@ Go library for commonly used statistical computations, optimized for performance
 
 ## Usage
 
+### Factorial
+
 Computing the value of 12!:
 
 ```go
@@ -23,6 +25,8 @@ func main() {
 }
 ```
 
+### Binomial coefficient
+
 Choosing 6 possibilities out of 49 options:
 
 ```go
@@ -41,6 +45,10 @@ func main() {
     fmt.Printf("49nCr6 = %d\n", val)
 }
 ```
+
+### Distributions
+
+#### Binomial distribution
 
 Calculating the chance of getting 3 heads when throwing a coin 10 times:
 
@@ -67,6 +75,33 @@ func main() {
 }
 ```
 
+#### Poisson distribution
+
+Calculating the chance of getting called 2 times in one minute for the rate $\lambda = 5.3$:
+
+```go
+package main
+
+import (
+    "fmt"
+    "github.com/xnacly/statlib/distributions"
+)
+
+func main() {
+    pois, err := distributions.PoissonNew(5.3)
+    if err != nil {
+        panic(err)
+    }
+
+    val, err := pois.Prob(2)
+    if err != nil {
+        panic(err)
+    }
+
+    fmt.Printf("Chance of getting exactly 2 calls in one minute = %f%%\n", val*100)
+}
+```
+
 ## Features
 
 - [x] Factorial
@@ -78,8 +113,9 @@ func main() {
     - [ ] Mean
     - [ ] Variance
   - [x] Binomial
-  - [ ] Normal
-  - [ ] Poisson
+  - [x] Poisson
+  - [ ] Geometric
+  - [ ] Exponential
 
 ## Contributing
 
